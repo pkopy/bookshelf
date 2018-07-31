@@ -5,18 +5,28 @@ import escapeRegExp from 'escape-string-regexp'
 import sortBy from 'sort-by'
 import BookShelfChanger from './BookShelfChanger'
 import DisplayBooks from './DisplayBooks'
+import * as BooksAPI from './BooksAPI'
 
 
 class SearchBooks extends Component {
   state = {
-    query: ''
+    query: '',
+    // books:[]
   }
   updateQuery = (query) => {
     this.setState({ query: query})
   }
 
+  // componentDidMount() {
+  //   BooksAPI.search(this.state.query).then((books) => {
+  //     this.setState({ books })
+  //   }).catch(() => {
+  //     this.setState({books:[]})
+  //   })
+  // }
+
   render() {
-    const { books, onChangeSearchPage } = this.props;
+    const { books,  onChangeSearchPage } = this.props;
     const { query } = this.state;
 
     let showingBooks
@@ -51,32 +61,13 @@ class SearchBooks extends Component {
 
               value={this.state.query}
               onChange={(event) => this.updateQuery(event.target.value)}
+              
             />
 
           </div>
         </div>
         <div className="search-books-results">
           <DisplayBooks books={showingBooks}/>        
-          {/* <ol className="books-grid">
-            {showingBooks.map((book) => (
-              <li key={book.id}>
-                <div className="book">
-                  <div className="book-top">
-                    <div className="book-cover" style={{ backgroundImage: `url(${book.imageLinks.thumbnail})`, width: '128px', height: '188px' }}> </div>
-                    <div className="book-shelf-changer">
-                      <BookShelfChanger />
-                    </div>
-                  </div>
-                  <div className="book-title" >{book.title}</div>
-                  <div className="book-authors">
-                    {book.authors.map((author, index) => (
-                      <p key={index}>{author}</p>
-                    ))}
-                  </div>
-                </div>
-              </li>
-            ))}
-          </ol> */}
         </div>
       </div>
     )
