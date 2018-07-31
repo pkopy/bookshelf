@@ -44,15 +44,20 @@ class BooksApp extends React.Component {
     return (
       <div className="app">
         {this.state.showSearchPage ? (
-          <SearchBooks
-            books={this.state.books}
-            onChangeSearchPage={this.changeShowSearchePage}
+          <Route patch='/search' render={() => (
+            <SearchBooks 
+              books={this.state.books}
+              onChangeSearchPage={this.changeShowSearchePage}
+            />
+
+          )}
           />
         ) : (
           <Route exact path='/' render={() => (
             <MyReads
               books={this.state.books}
               read={this.state.books.filter((book) => book.shelf ==='read')}
+              update={this.componentDidMount}
               onChangeSearchPage={this.changeShowSearchePage}
               
             />

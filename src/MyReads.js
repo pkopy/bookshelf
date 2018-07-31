@@ -17,7 +17,7 @@ class MyReads extends Component {
 	}
 	
 	render () {
-		const { curentReading, wantToRead, read, onChangeSearchPage } = this.props;
+		const { curentReading, wantToRead, read, onChangeSearchPage, update } = this.props;
 		// const {} = this.state;
 
 		
@@ -32,20 +32,20 @@ class MyReads extends Component {
           			<div className="bookshelf-books">
 									<DisplayBooks 
 									books={read}
-									
+									update={update}
 									/>
           			</div>
           	  </div>
 							<div className="bookshelf">
           			<h2 className="bookshelf-title">Want to read</h2>
           			<div className="bookshelf-books">
-									<DisplayBooks books={read}/>
+									<DisplayBooks books={read} update={update}/>
           			</div>
           	  </div>
 							<div className="bookshelf">
           			<h2 className="bookshelf-title">Read</h2>
           			<div className="bookshelf-books">
-									<DisplayBooks books={read}/>
+									<DisplayBooks books={read} update={update}/>
           			</div>
           	  </div>
           	  <div className="open-search">
