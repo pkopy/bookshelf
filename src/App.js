@@ -17,7 +17,8 @@ class BooksApp extends React.Component {
      * pages, as well as provide a good URL they can bookmark and share.
      */
     showSearchPage: false,
-    books: []
+    books: [],
+    
   }
   componentDidMount() {
     BooksAPI.getAll().then((books) => {
@@ -48,12 +49,18 @@ class BooksApp extends React.Component {
             onChangeSearchPage={this.changeShowSearchePage}
           />
         ) : (
-          
+          <Route exact path='/' render={() => (
             <MyReads
               books={this.state.books}
+              read={this.state.books.filter((book) => book.shelf ==='read')}
               onChangeSearchPage={this.changeShowSearchePage}
+              
             />
           )}
+          />
+          )
+        }
+
       </div>
     )
   }

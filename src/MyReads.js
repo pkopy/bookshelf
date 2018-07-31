@@ -3,14 +3,25 @@ import DisplayBooks from './DisplayBooks';
 
 
 class MyReads extends Component {
+	state ={
+		curentReading:[],
+		wantToRead : [],
+		read: []
+	}
+	update = () => {
+		console.log('xx')
+		this.setState({curentReading: this.props.books.filter((book) => book.shelf ==='currentlyReading')})
+		this.setState({wantToRead: this.props.books.filter((book) => book.shelf ==='wantToRead')})
+		this.setState({read: this.props.books.filter((book) => book.shelf ==='read')})
+		
+	}
+	
 	render () {
-		const { books, onChangeSearchPage } = this.props;
-		let curentReading;
-		curentReading = books.filter((book) => book.shelf ==='currentlyReading')
-		let wantToRead = 
-		wantToRead = books.filter((book) => book.shelf ==='wantToRead')
-		let read = 
-		read = books.filter((book) => book.shelf ==='read')
+		const { curentReading, wantToRead, read, onChangeSearchPage } = this.props;
+		// const {} = this.state;
+
+		
+		
     	return (
         	<div className="list-books">
               <div className="list-books-title">
@@ -19,13 +30,16 @@ class MyReads extends Component {
           	  <div className="bookshelf">
           			<h2 className="bookshelf-title">Currently Reading</h2>
           			<div className="bookshelf-books">
-									<DisplayBooks books={curentReading}/>
+									<DisplayBooks 
+									books={read}
+									
+									/>
           			</div>
           	  </div>
 							<div className="bookshelf">
           			<h2 className="bookshelf-title">Want to read</h2>
           			<div className="bookshelf-books">
-									<DisplayBooks books={wantToRead}/>
+									<DisplayBooks books={read}/>
           			</div>
           	  </div>
 							<div className="bookshelf">
