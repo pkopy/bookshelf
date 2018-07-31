@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 //import PropTypes from 'prop-types'
-//import { Link } from 'react-router-dom'
+import {Route} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import escapeRegExp from 'escape-string-regexp'
 import sortBy from 'sort-by'
 import BookShelfChanger from './BookShelfChanger'
